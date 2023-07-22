@@ -1,0 +1,30 @@
+.titles{
+    top: 85px;
+    left: 100px;
+    color: white;
+    position: fixed;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    padding-inline: 10px;
+}
+.titles::-webkit-scrollbar{
+    display: none;
+}
+
+.titles span{
+    background-color: rgb(34, 40, 55);
+    padding: 10px;
+    margin-inline: 10px;
+    border-radius: 10px;
+}
+
+.titles i:last-child{
+    position: fixed;
+    right: 0px;
+    background-color:  rgb(13, 17, 28);
+    box-shadow: 0 0 5px 5px  rgb(13, 17, 28);
+    padding:20px;
+    border-radius: 10px;
+}
