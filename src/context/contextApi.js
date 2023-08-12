@@ -24,9 +24,9 @@ export function AppContextProvider (props){
     //for more understand create func , can also do directly
     const fetchSelectedCategoryData = (query)=>{
         setLoading(true);
-        fetchDataFromApi(`/search/?q=${query}`).then((res)=>{
-            console.log(res);//all new data/videos
-            setSearchResults(res);
+        fetchDataFromApi(`/search/?q=${query}`).then(({contents})=>{
+            console.log(contents);//all new data/videos
+            setSearchResults(contents);
             setLoading(false);
         })
     }
@@ -48,6 +48,6 @@ export function AppContextProvider (props){
 }
 
 //step3 custom consumer func
-export function useContextvalue(){
+export function useContextValue(){
     return useContext(context);
 }
