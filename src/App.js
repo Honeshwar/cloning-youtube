@@ -6,7 +6,7 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom";
 function App() {
   const router = createBrowserRouter([
     {path:'/',element:<Header/>, children:[
-      {path:'/',element:<Feed/>,},
+      {path:'/',element:<Feed/>,},// inside feed there is navbar left and feed videos
       {path:'/searchResult/:searchQuery',element:<SearchResult/>,},
       {path:'/video/:id',element:<VideoDetails/>,}
     ]}

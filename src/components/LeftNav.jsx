@@ -1,53 +1,125 @@
-import React from 'react';
-import {useNavigate} from "react-router-dom";
+// import React from 'react';
+// import {useNavigate} from "react-router-dom";
 
-import LeftMenuItem from "./LeftNavMenuItem";
-import {categories} from "../utils/constants";
-import {useContextValue} from '../context/contextApi';
+// import LeftNavMenuItem from "./LeftNavMenuItem";
+// import {categories} from "../utils/constants";
+// import { useContextValue } from '../context/contextApi';
+
+// const LeftNav = () => {
+//     const { selectedCategory, setSelectedCategory, mobileMenu } =
+//         useContextValue();
+
+//     const navigate = useNavigate();
+
+//     const clickHandler = (name, type) => {
+//         switch (type) {
+//             case "category":
+//                 return setSelectedCategory(name);
+//             case "home":
+//                 return setSelectedCategory(name);
+//             case "menu":
+//                 return false;
+//             default:
+//                 break;
+//         }
+//     };
+
+//     return (// if you want to return sibling fragment comp use,no optional chaining because data we create sstore in js file(not come from server/we can full responsible for data)
+//         <div
+//             className={`md:block w-[240px] overflow-y-auto h-full py-4 bg-black absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all ${
+//                 mobileMenu ? "translate-x-0" : ""
+//             }`}
+//         >
+//             <div className="flex px-5 flex-col">
+//                 {categories.map((item) => {
+//                     return (
+//                         <React.Fragment key={item.name}>
+//                             <LeftNavMenuItem
+//                                 text={item.type === "home" ? "Home" : item.name}
+//                                 icon={item.icon}
+//                                 action={() => {
+//                                     clickHandler(item.name, item.type);
+//                                     navigate("/");
+//                                 }}
+//                                 className={`${
+//                                     selectedCategory === item.name
+//                                         ? "bg-white/[0.15]"
+//                                         : ""
+//                                 }`}//null,t/f ,undefined , func with nothing return also take instead "
+//                             />
+//                             {item.divider && (
+//                                 <hr className="my-5 border-white/[0.2]" />
+//                             )}
+//                         </React.Fragment>
+//                     );
+//                 })}
+//                 <hr className="my-5 border-white/[0.2]" />
+//                 <div className="text-white/[0.5] text-[12px]">
+//                     Clone by: JS Dev Hindi
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default LeftNav;
 
 
-function LeftNav() {
-  const {selectedCategories , setSelectedCategories,mobileMenu} = useContextValue();
-  const navigate = useNavigate();
-  const clickHandler = (name,type)=>{
-    switch(type){
-      case 'category'||'home':
-        return setSelectedCategories(name);
-      case 'menu':
-        return false;
-      default:
-        break;
-    }
-  }
-  return (
-    <div className='md:block w-[240px] overflow-y-auto h-full py-4 bg-black absolute md:relative z-10 translate-x-[240] md:translate-x-0 transition-all'>
-      <div className='flex px-5 flex-col'>
-          {categories.map((category,i)=>{
-            return(// if you want to return sibling fragment comp use,no optional chaining because data we create sstore in js file(not come from server/we can full responsible for data)
-            <React.Fragment key={category.name}>
-                <LeftMenuItem 
-                  text={category.type === "home" ? "Home" : category.name}//name = pass in route
-                  icon={category.icon}
-                  action={()=>{
-                    clickHandler(category.name,category.type);
-                    navigate('/');
-                  }}
-                  className={`${selectedCategories === category.name? "bg-white/[.15]" : ""}`}//null,t/f ,undefined , func with nothing return also take instead "
-                />
-                {category.divider && (
-                  <hr className="my-5 border-white/[.2]" />
-                )}
-            </React.Fragment>
-            )
-          })}
-            <hr className="my-5 border-white/[.2]" />
-            <div className="text-white/[.5] text-[12px]">
-              Hi,there!,...
+
+
+
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+import LeftNavMenuItem from "./LeftNavMenuItem";
+import { categories } from "../utils/constants";
+import { useContextValue } from "../context/contextApi";
+
+const LeftNav = () => {
+    const { selectedCategory, setSelectedCategory, mobileMenu } =
+        useContextValue();
+
+    const navigate = useNavigate();
+
+    const clickHandler = (name, type) => {
+    };
+
+    return (
+        <div
+            className={`md:block w-[240px] overflow-y-auto h-full py-4 bg-black absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all ${
+                mobileMenu ? "translate-x-0" : ""
+            }`}
+        >
+            <div className="flex px-5 flex-col">
+                {categories.map((item) => {
+                    return (
+                        <React.Fragment key={item.name}>
+                            <LeftNavMenuItem
+                                text={item.type === "home" ? "Home" : item.name}
+                                icon={item.icon}
+                                action={() => {
+                                    clickHandler(item.name, item.type);
+                                    navigate("/");
+                                }}
+                                className={`${
+                                    selectedCategory === item.name
+                                        ? "bg-white/[0.15]"
+                                        : ""
+                                }`}
+                            />
+                            {item.divider && (
+                                <hr className="my-5 border-white/[0.2]" />
+                            )}
+                        </React.Fragment>
+                    );
+                })}
+                <hr className="my-5 border-white/[0.2]" />
+                <div className="text-white/[0.5] text-[12px]">
+                    Clone by: JS Dev Hindi
+                </div>
             </div>
-      </div>
+        </div>
+    );
+};
 
-    </div>
-  )
-}
-
-export default LeftNav
+export default LeftNav;
